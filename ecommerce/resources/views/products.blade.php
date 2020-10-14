@@ -11,7 +11,7 @@
         <body>
             <!--navbar-->
             <div class="header">
-            
+            @extends('layouts.search')
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
@@ -49,6 +49,7 @@
                         </ul>
                     </nav>
                 </div>
+                @section('content')
             </div>
            </div>
         <!--end navbar-->
@@ -58,12 +59,19 @@
                   <h2>All products</h2>
                  
                   <select>
-                    <option>Default sorting </option>
-                    <option>Price low to high</option>
-                    <option>Price high to low</option>
-                    <option>By popularity</option>
-                    <option>By sales</option>
-                    <option>By rating</option>
+                  <optgroup label="By category">
+                    <option><a href="{{ route('product.getfilter',1) }}">clothing </a></option>
+                    <option><a href="{{ route('product.getfilter',2) }}">shoes</a></option>
+                    <option><a href="{{ route('product.getfilter',3) }}">bags</a></option>
+                    <option><a href="{{ route('product.getfilter',4) }}">accessories</a></option>
+                    </optgroup>
+                    <optgroup label="By price">
+                    <option><a href="{{ route('product.getpricefilter',200) }}"><=200 EGP</a></option>
+                    <option><a href="{{ route('product.getpricefilter',500) }}"><= 500 EGP</a></option>
+                    <option><a href="{{ route('product.getpricefilter',700) }}"><= 700 EGP</a></option>
+                    <option><a href="{{ route('product.getpricefilter',1000) }}"><= 1000 EGP</a></option>
+                    <option><a href="{{ route('product.getpricefilter',1500) }}"><= 1500 EGP</a></option>
+                    </optgroup>
                  </select>
            
                
@@ -149,6 +157,7 @@
 
         <!--end footer-->
             </div>
+            @endsection
         </body>
     </html>
 </DOCTYPE>

@@ -1,6 +1,6 @@
 <DOCTYPE html>
 @extends('layouts.profile-info')
-
+@extends('layouts.search')
     <html lang="en">
    <head>
             <meta charset="utf-8">
@@ -53,31 +53,8 @@
                     
 
 
-
-
-      
-
-
-
-
-                    @section('profile-info')
-                        @endsection 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-                
+                @section('content')
             </div>
            </div>
         <!--end navbar-->
@@ -211,7 +188,7 @@ logo.png" alt="">
             </div>
             </div>
             </div>
-            
+            @endsection
         </body>
 
     </html>

@@ -1,41 +1,27 @@
-<!-- 
-
-</h3>
-<a  class="btn btn-primary" href="{{route ('cart.checkout')}}" role="button">Proceed to Checkout</a>
-<div>
-        <br />
-<a  class="btn btn-primary" href="{{route ('product.index')}}" role="button">Back to Shop</a>
-</div>
-
-  -->
-
-
-
-
-@extends('layouts.search')
- <DOCTYPE html>
+<DOCTYPE html>
     <html lang="en">
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="<?php echo url('/'); ?>/css/fashion.css">
+            <link rel="stylesheet" href="css/fashion.css">
             <title> Egypt Hut </title>
             <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;500;600&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/<?php echo url('/'); ?>/css/font-awesome.min.css" >
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
         </head>
-        
         <body>
+            <!--navbar-->
             <div class="header">
+            @extends('layouts.search')
             
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
                     <a href="{{route('home')}}">
-                        <img src="images/logo.png" alt=""/ width="200px">
-                        </a>
+                        <img src="<?php echo url('/'); ?>/images/logo.png" alt="logo" width="200px">
+                    </a>
                     </div>
                     <nav>
-                        <ul>
+                    <ul>
                             <li><a href="{{route('home')}}"> Home </a></li>
                              <li><a href="{{route('product.index')}}">Products</a></li>
                              <li><a href="{{route('aboutus')}}">About Us</a></li>
@@ -52,9 +38,9 @@
                         @endif
                     @endif
                 </div>
+                
             @endif</li>
-                        
-                        </ul>
+            </ul>
                     </nav>
                     <a href="{{ route('cart.index') }}">
                     <img src="images/cartlogo1.png" alt=""/ width="30px" height="30px">
@@ -62,61 +48,74 @@
                     <a href="{{ route('wishlist') }}">
                     <img src="images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
+                        </ul>
+                    </nav>
                 </div>
                 @section('content')
-            </div>
+                
             </div>
             
-            <div class="small-container cart-page">
-                <table >
-                    <tr>
-                        <th>Product</th>
-                        
-                        <th>Quantity</th>
-                        
-                       <th>Subtotal</th>
-                       
-                         <th>Action</th>
-                        
-                    </tr>
-                    @foreach ($cartItems as $item)
-                    <tr>
-                        <td>
-                            <div class="cart-info">
-                                <div class="small container pic">
-                                    <a href="{{route('product.show',$item->id)}}">
-                                    @foreach($item->associatedModel->images as $productimage)
-                                    <a href="{{route('product.show',$item->id)}}">
-                                    <img src="{{ URL::to('/images/' . $productimage->image) }}"/></a>
-                                    @break
-                                @endforeach 
-                                  <p> {{$item->name}}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <form action="{{route('cart.update',$item->id)}}">
-                    <input action="onchange" name="quantity" type="number" value ="{{$item->quantity}}">
-                </form>
-                        </td>
-                         <td> {{$item->price}} EGP </td>
-                       <td> <a href="{{ route('cart.destroy', $item->id) }}">Remove</a></td>
-                    </tr> 
-                    @endforeach
-                </table>
+          
+           </div>
+           
+        <!--end navbar-->
+       
+        
+        <!--product-->
+            <div class="small-container">
+            <div class="row row-2">
+                  <h2>All products</h2>
+                 
+                  <select>
+                    <option>Default sorting </option>
+                    <option>Price low to high</option>
+                    <option>Price high to low</option>
+                    <option>By popularity</option>
+                    <option>By sales</option>
+                    <option>By rating</option>
+                 </select>
+        
                
-               <div class="total-price ">
-                   <table>
-                   <tr>
-                       <td>Total Price:</td>
-                       <td>{{\Cart::session(auth()->id())->getTotal()}} EGP</td>
-                       
-                   </tr>
-                   
+              <div class="row">
+            
+              @foreach ($products as $product)
+                 <div class="col-4">
+                 @foreach($images as $productimage)
+                 @if ($product->id == $productimage->product_id)
+                    <p > {{$productimage->image}} </p>
+                    @endif
+                     @endforeach
+                    <div class="rating">
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star"></i>
+                     <i class="fa fa-star-o"></i>
+                     </div>
+                     <button type="button" class="btn btn-outline-danger">{{$product->price}}</button>
+                     <button type="button" class="btn btn-outline-danger">{{$product->sale_price}}</button>
+                     <a href="{{route('product.show',$product->id)}}"
+                  <h2 id="h2"> Product Details</h2>
+                </a>
+                  </div>  
+              @endforeach
+                  
 
-                       </table>
-                </div>
             </div>
+
+  <div class="page-btn">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>&#8594;</span>
+                   </div>  
+    </div>
+    
+           
+           
+                 
             <div class="footer">
                 <div class="container">
                     <div class="row">
@@ -124,15 +123,12 @@
                             <h3>Download Our App</h3>
                             <p>Download EgyptHut App for IOS and Android mobile phone</p>
                             <div class="app-logo">
-                                <img src="<?php echo url('/'); ?>/images/
-applogo1.png" alt="">
-                                 <img src="<?php echo url('/'); ?>/images/
-applogo2.png" alt="">
+                                <img src="images/applogo1.png" alt="">
+                                 <img src="images/applogo2.png" alt="">
                             </div>
                         </div>
                         <div class="footer-col-2">
-                            <img src="<?php echo url('/'); ?>/images/
-logo.png" alt="">
+                            <img src="images/logo.png" alt="">
                             <p>our purpose is to provide the customer with authentic Designer products</p> 
                         </div>
                         <div class="footer-col-3">
@@ -157,8 +153,11 @@ logo.png" alt="">
                     <p class="copyright">copyright &copy; 2020 www.EgyptHut.com</p>
                 </div>
             </div>
-            @endsection
-                   </body>
-    </html>
 
+        <!--end footer-->
+            </div>
+            @endsection
+        </body>
+    </html>
 </DOCTYPE>
+        

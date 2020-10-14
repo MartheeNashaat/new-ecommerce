@@ -14,14 +14,19 @@ font-awesome.min.css" >
         
         <body>
             <div class="header">
+            @extends('layouts.search')
             
             <div class="container">
+            
                 <div class="navbar">
+                
                     <div class="logo">
+                    
                         <a href="{{route('home')}}">
                         <img src="images/logo.png" alt=""/ width="200px">
                         </a>
                     </div>
+                    
                     <nav>
                     <ul>
                             <li><a href="{{route('home')}}"> Home </a></li>
@@ -30,11 +35,12 @@ font-awesome.min.css" >
                              <li><a href="{{route('contact')}}">Contacts</a></li>
                              <li>@if (Route::has('login'))
                 <div>
+                
                     @auth
                         <a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 underline">profile</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
+                       
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
@@ -52,7 +58,7 @@ font-awesome.min.css" >
                     </a>
                 </div>
                 </div>
-                
+                @section('content')
                 </div>
             </div>
             
@@ -60,6 +66,9 @@ font-awesome.min.css" >
             <div class="row row-2">
                   <h2>Your Wishlist</h2>
                  <div class="row">
+                 @if($wishlists->isEmpty())
+                 <h2>Youe wishlist is empty,Go ahead and add to it</h2>
+                 @else
                   @foreach ($wishlists as $wishlist)
                   <div class="col-4">
                       
@@ -80,13 +89,14 @@ font-awesome.min.css" >
                         <button type="button" class="btn btn-outline-danger"> <a href="{{route('product.show',$wishlist->product->id)}}">Product Details</a></button>
 </div>
 @endforeach 
+@endif
 </div>
 </div>
 
 
     
                 
-
+@endsection
 </body>
 </DOCTYPE>
 

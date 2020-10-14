@@ -1,4 +1,5 @@
 <DOCTYPE html>
+@extends('layouts.search')
     <html lang="en">
         <head>
             <meta charset="utf-8">
@@ -41,7 +42,7 @@
                     <img src="images/cartlogo1.png" alt=""/ width="30px" height="30px">
                     <img src="images/wishlist.png" alt=""/ width="30px" height="30px">
                 </div>
-                 
+                @section('content')
                 </div>
             </div>
 
@@ -105,6 +106,6 @@ we will get back to you within 24 hours.</p>
 
 
 
-
+@endsection
 
 </html>

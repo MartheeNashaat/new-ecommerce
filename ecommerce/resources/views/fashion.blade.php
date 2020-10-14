@@ -1,4 +1,5 @@
 <DOCTYPE html>
+@extends('layouts.search')
     <html lang="en">
         <head>
             <meta charset="utf-8">
@@ -50,6 +51,7 @@ font-awesome.min.css" >
                     <img src="images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
                 </div>
+                @section('content')
                  <div class="cover">
         <img src="images/cover1.png">
                 
@@ -247,7 +249,7 @@ font-awesome.min.css" >
     </html>
 
 
-
+@endsection
 
 
 
