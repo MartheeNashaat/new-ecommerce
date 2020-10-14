@@ -14,14 +14,19 @@ font-awesome.min.css" >
         
         <body>
             <div class="header">
+            @extends('layouts.search')
             
             <div class="container">
+            
                 <div class="navbar">
+                
                     <div class="logo">
+                    
                         <a href="{{route('home')}}">
                         <img src="images/logo.png" alt=""/ width="200px">
                         </a>
                     </div>
+                    
                     <nav>
                     <ul>
                             <li><a href="{{route('home')}}"> Home </a></li>
@@ -30,11 +35,12 @@ font-awesome.min.css" >
                              <li><a href="{{route('contact')}}">Contacts</a></li>
                              <li>@if (Route::has('login'))
                 <div>
+                
                     @auth
                         <a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 underline">profile</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
+                       
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                         @endif
@@ -52,7 +58,7 @@ font-awesome.min.css" >
                     </a>
                 </div>
                 </div>
-                
+                @section('content')
                 </div>
             </div>
             
@@ -90,7 +96,7 @@ font-awesome.min.css" >
 
     
                 
-
+@endsection
 </body>
 </DOCTYPE>
 

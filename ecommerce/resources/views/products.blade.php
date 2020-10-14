@@ -11,7 +11,7 @@
         <body>
             <!--navbar-->
             <div class="header">
-            
+            @extends('layouts.search')
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
@@ -49,6 +49,7 @@
                         </ul>
                     </nav>
                 </div>
+                @section('content')
             </div>
            </div>
         <!--end navbar-->
@@ -156,6 +157,7 @@
 
         <!--end footer-->
             </div>
+            @endsection
         </body>
     </html>
 </DOCTYPE>

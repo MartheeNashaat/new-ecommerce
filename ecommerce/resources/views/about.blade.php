@@ -1,5 +1,6 @@
 
 <DOCTYPE html>
+@extends('layouts.search')
     <html lang="en">
         <head>
             <meta charset="utf-8">
@@ -42,7 +43,7 @@
                     <img src="images/cartlogo1.png" alt=""/ width="30px" height="30px">
                     <img src="images/wishlist.png" alt=""/ width="30px" height="30px">
                 </div>
-                 
+                @section('content')
                 </div>
             </div>
 
@@ -102,7 +103,7 @@ USA,UK,Turkey and more. We help our customer to choose what they want .</center>
 </DOCTYPE>
 
 
-
+@endsection
 
 
 </html>

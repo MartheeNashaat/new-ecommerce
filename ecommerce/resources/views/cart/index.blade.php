@@ -12,7 +12,7 @@
 
 
 
-
+@extends('layouts.search')
  <DOCTYPE html>
     <html lang="en">
         <head>
@@ -63,6 +63,7 @@
                     <img src="images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
                 </div>
+                @section('content')
             </div>
             </div>
             
@@ -156,6 +157,7 @@ logo.png" alt="">
                     <p class="copyright">copyright &copy; 2020 www.EgyptHut.com</p>
                 </div>
             </div>
+            @endsection
                    </body>
     </html>
 
