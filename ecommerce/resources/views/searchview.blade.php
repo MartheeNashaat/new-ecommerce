@@ -11,6 +11,7 @@
         <body>
             <!--navbar-->
             <div class="header">
+            @extends('layouts.search')
             
             <div class="container">
                 <div class="navbar">
@@ -37,6 +38,7 @@
                         @endif
                     @endif
                 </div>
+                
             @endif</li>
             </ul>
                     </nav>
@@ -49,38 +51,39 @@
                         </ul>
                     </nav>
                 </div>
+                @section('content')
+                
             </div>
+            
+          
            </div>
+           
         <!--end navbar-->
+       
+        
         <!--product-->
             <div class="small-container">
             <div class="row row-2">
                   <h2>All products</h2>
                  
                   <select>
-                  <optgroup label="By category">
-                    <option><a href="{{ route('product.getfilter',1) }}">clothing </a></option>
-                    <option><a href="{{ route('product.getfilter',2) }}">shoes</a></option>
-                    <option><a href="{{ route('product.getfilter',3) }}">bags</a></option>
-                    <option><a href="{{ route('product.getfilter',4) }}">accessories</a></option>
-                    </optgroup>
-                    <optgroup label="By price">
-                    <option><a href="{{ route('product.getpricefilter',200) }}"><=200 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',500) }}"><= 500 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',700) }}"><= 700 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',1000) }}"><= 1000 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',1500) }}"><= 1500 EGP</a></option>
-                    </optgroup>
+                    <option>Default sorting </option>
+                    <option>Price low to high</option>
+                    <option>Price high to low</option>
+                    <option>By popularity</option>
+                    <option>By sales</option>
+                    <option>By rating</option>
                  </select>
-           
+        
                
               <div class="row">
+            
               @foreach ($products as $product)
                  <div class="col-4">
-                 @foreach($product->images as $productimage)
-                 <a href="{{route('product.show',$product->id)}}">
-                <img src={{asset("images/$productimage->image")}} height="auto" width="850" alt="product"/></a>
-                     @break
+                 @foreach($images as $productimage)
+                 @if ($product->id == $productimage->product_id)
+                    <p > {{$productimage->image}} </p>
+                    @endif
                      @endforeach
                     <div class="rating">
                      <i class="fa fa-star"></i>
@@ -89,21 +92,18 @@
                      <i class="fa fa-star"></i>
                      <i class="fa fa-star-o"></i>
                      </div>
-                     <button type="button" class="btn1 btn-outline-danger">{{$product->price}}EGP</button>
-                     
-                     <button type="button" class="btn btn-outline-danger"><a href="{{route('wishlist.add',$product->id)}}">add to wishlist</a></button>
-                     <button type="button" class="btn btn-outline-danger"><a href="{{route('cart.add',$product)}}">Add to cart</a></button>
-                     
-
+                     <button type="button" class="btn btn-outline-danger">{{$product->price}}</button>
+                     <button type="button" class="btn btn-outline-danger">{{$product->sale_price}}</button>
                      <a href="{{route('product.show',$product->id)}}"
-                  
+                  <h2 id="h2"> Product Details</h2>
                 </a>
                   </div>  
-        
-                  @endforeach
+              @endforeach
+                  
 
             </div>
-             <div class="page-btn">
+
+  <div class="page-btn">
                 <span>1</span>
                 <span>2</span>
                 <span>3</span>
@@ -156,6 +156,7 @@
 
         <!--end footer-->
             </div>
+            @endsection
         </body>
     </html>
 </DOCTYPE>

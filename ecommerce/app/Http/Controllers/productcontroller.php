@@ -42,7 +42,7 @@ class productcontroller extends Controller
     // Filters products according to the original price not the sale price.
     function getPriceFilter($price)
     {
-        $products = product::whereBetween('price', [0, $price])->get();
+        $products = product::whereBetween('sale_price', [0, $price])->get();
         return view('products')->with('products',$products);
     }
 }

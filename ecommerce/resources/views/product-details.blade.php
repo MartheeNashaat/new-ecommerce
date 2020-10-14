@@ -53,29 +53,6 @@
                     
 
 
-
-
-      
-
-
-
-
-                    @section('profile-info')
-                        @endsection 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
                 
             </div>

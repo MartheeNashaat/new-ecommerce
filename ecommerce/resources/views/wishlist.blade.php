@@ -60,6 +60,9 @@ font-awesome.min.css" >
             <div class="row row-2">
                   <h2>Your Wishlist</h2>
                  <div class="row">
+                 @if($wishlists->isEmpty())
+                 <h2>Youe wishlist is empty,Go ahead and add to it</h2>
+                 @else
                   @foreach ($wishlists as $wishlist)
                   <div class="col-4">
                       
@@ -80,6 +83,7 @@ font-awesome.min.css" >
                         <button type="button" class="btn btn-outline-danger"> <a href="{{route('product.show',$wishlist->product->id)}}">Product Details</a></button>
 </div>
 @endforeach 
+@endif
 </div>
 </div>
 

@@ -51,6 +51,7 @@ Route::get('/homepage/{product}', [productcontroller::class, 'show'])->name('pro
 Route::get('/search',[SearchController::class, 'search'])->name('searchy');
 Route::get('/{brand}', [productcontroller::class, 'showbrand'])->name('product.brand');
 Route::get('shop/category/{category_id}', [productcontroller::class, 'getfilter'])->name('product.getfilter');
+Route::get('shop/category/{sale_price}', [productcontroller::class, 'getPriceFilter'])->name('product.getpricefilter');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
