@@ -1,124 +1,115 @@
 <DOCTYPE html>
     <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="<?php echo url('/'); ?>/css/
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="<?php echo url('/'); ?>/css/
 fashion.css">
-            <title> Egypt Hut </title>
-            <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;500;600&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/<?php echo url('/'); ?>/css/
-font-awesome.min.css" >
-            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        </head>
-        <body>
-            <!--navbar-->
-            <div class="header">
+        <title> Egypt Hut </title>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/<?php echo url('/'); ?>/css/
+font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+
+    <body>
+        <!--navbar-->
+        <div class="header">
             @extends('layouts.search')
 
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
-                    <a href="{{route('home')}}">
-                        <img src="<?php echo url('/'); ?>/images/logo.png" alt="logo" width="200px">
-                    </a>
+                        <a href="{{route('home')}}">
+                            <img src="<?php echo url('/'); ?>/images/logo.png" alt="logo" width="200px">
+                        </a>
                     </div>
                     <nav>
-                    <ul>
+                        <ul>
                             <li><a href="{{route('home')}}"> Home </a></li>
-                             <li><a href="{{route('product.index')}}">Products</a></li>
-                             <li><a href="{{route('aboutus')}}">About Us</a></li>
-                             <li><a href="{{route('contact')}}">Contacts</a></li>
-                             <li>@if (Route::has('login'))
-                <div>
-                    @auth
-                        <a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 underline">profile</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
+                            <li><a href="{{route('product.index')}}">Products</a></li>
+                            <li><a href="{{route('aboutus')}}">About Us</a></li>
+                            <li><a href="{{route('contact')}}">Contacts</a></li>
+                            <li>@if (Route::has('login'))
+                                <div>
+                                    @auth
+                                    <a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 underline">profile</a>
+                                    @else
+                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endif
-                </div>
-            @endif</li>
-            </ul>
+                                    @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                                    @endif
+                                    @endif
+                                </div>
+                                @endif</li>
+                        </ul>
                     </nav>
                     <a href="{{ route('cart.index') }}">
-                    <img src="<?php echo url('/'); ?>/images/cartlogo1.png" alt=""/ width="30px" height="30px">
+                        <img src="<?php echo url('/'); ?>/images/cartlogo1.png" alt=""/ width="30px" height="30px">
                     </a>
                     <a href="{{ route('wishlist') }}">
-                    <img src="<?php echo url('/'); ?>/images/wishlist.png" alt=""/ width="40px" height="40px">
+                        <img src="<?php echo url('/'); ?>/images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
-                        </ul>
+                    </ul>
                     </nav>
                 </div>
                 @section('content')
 
             </div>
-           </div>
+        </div>
         <!--end navbar-->
         <!--product-->
-            <div class="small-container">
+        <div class="small-container">
             <div class="row row-2">
-                  <h2>All products</h2>
-                 
-                  <ul>
-                  <li>By category</li>
+                <h2>All products</h2>
+
+                <ul>
+                    <li>By category</li>
                     <li><a href="{{ route('product.getfilter',1) }}">clothing </a></li>
                     <li><a href="{{ route('product.getfilter',2) }}">shoes</a></li>
                     <li><a href="{{ route('product.getfilter',3) }}">bags</a></li>
                     <li><a href="{{ route('product.getfilter',4) }}">accessories</a></li>
                     <li>By price</li>
-                    <li><a href="{{ route('product.getpricefilter',200) }}"><=200 EGP</a></li>
-                    <li><a href="{{ route('product.getpricefilter',500) }}"><= 500 EGP</a></li>
-                    <li><a href="{{ route('product.getpricefilter',700) }}"><= 700 EGP</a></li>
-                    <li><a href="{{ route('product.getpricefilter',1000) }}"><= 1000 EGP</a></li>
-                    <li><a href="{{ route('product.getpricefilter',1500) }}"><= 1500 EGP</a></li>
-                    </ul>
-           
-               
-              <div class="row">
-              @foreach ($products as $product)
-                 <div class="col-4">
-                 @foreach($product->images as $productimage)
-                 <a href="{{route('product.show',$product->id)}}">
-                <img src={{asset("images/$productimage->image")}} height="auto" width="800" alt="product"/></a>
-                     @break
-                     @endforeach
-                    <div class="rating">
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star"></i>
-                     <i class="fa fa-star-o"></i>
-                     </div>
-                     <button type="button" class="btn1 btn-outline-danger">{{$product->price}}EGP</button>
-                  
-                     <button type="button" class="btn btn-outline-danger"><a href="{{route('cart.add',$product)}}">Add to cart</a></button>
-                     <a href="{{route('wishlist.add',$product->id)}}">
-                     <i class="material-icons">favorite</i></a>
-                     <a href="{{route('product.show',$product->id)}}"
-                  
-                </a>
-                  </div>  
-        
-                  @endforeach
+                    <li><a href="{{ route('product.getpricefilter',200) }}">
+                            <=200 EGP</a> </li> <li><a href="{{ route('product.getpricefilter',500) }}">
+                                    <= 500 EGP</a> </li> <li><a href="{{ route('product.getpricefilter',700) }}">
+                                            <= 700 EGP</a> </li> <li><a href="{{ route('product.getpricefilter',1000) }}">
+                                                    <= 1000 EGP</a> </li> <li><a href="{{ route('product.getpricefilter',1500) }}">
+                                                            <= 1500 EGP</a> </li> </ul> <div class="row">
+                                                                @foreach ($products as $product)
+                                                                <div class="col-4">
+                                                                    @foreach($product->images as $productimage)
+                                                                    <a href="{{route('product.show',$product->id)}}">
+                                                                        <img src={{asset("images/$productimage->image")}} height="auto" width="800" alt="product" /></a>
+                                                                    @break
+                                                                    @endforeach
+                                                                    <div class="rating">
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star"></i>
+                                                                        <i class="fa fa-star-o"></i>
+                                                                    </div>
+                                                                    <button type="button" class="btn1 btn-outline-danger">{{$product->price}}EGP</button>
 
+                                                                    <button type="button" class="btn btn-outline-danger"><a href="{{route('cart.add',$product)}}">Add to cart</a></button>
+                                                                    <a href="{{route('wishlist.add',$product->id)}}">
+                                                                        <i class="material-icons">favorite</i></a>
+                                                                    <a href="{{route('product.show',$product->id)}}" </a> </div> @endforeach </div> <div class="page-btn">
+                                                                        <span>1</span>
+                                                                        <span>2</span>
+                                                                        <span>3</span>
+                                                                        <span>4</span>
+                                                                        <span>5</span>
+                                                                        <span>&#8594;</span>
+                                                                </div>
             </div>
-             <div class="page-btn">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-                <span>&#8594;</span>
-                   </div>  
-    </div>
-    
-           
-           
-                 
+
+
+
+
             <div class="footer">
                 <div class="container">
                     <div class="row">
@@ -128,14 +119,14 @@ font-awesome.min.css" >
                             <div class="app-logo">
                                 <img src="<?php echo url('/'); ?>/images/
 applogo1.png" alt="">
-                                 <img src="<?php echo url('/'); ?>/images/
+                                <img src="<?php echo url('/'); ?>/images/
 applogo2.png" alt="">
                             </div>
                         </div>
                         <div class="footer-col-2">
                             <img src="<?php echo url('/'); ?>/images/
 logo.png" alt="">
-                            <p>our purpose is to provide the customer with authentic Designer products</p> 
+                            <p>our purpose is to provide the customer with authentic Designer products</p>
                         </div>
                         <div class="footer-col-3">
                             <h3>Useful links</h3>
@@ -143,7 +134,7 @@ logo.png" alt="">
                                 <li>coupons</li>
                                 <li>return policy</li>
                                 <li>Blog Post</li>
-                                
+
                             </ul>
                         </div>
                         <div class="footer-col-4">
@@ -160,10 +151,10 @@ logo.png" alt="">
                 </div>
             </div>
 
-        <!--end footer-->
-            </div>
-            @endsection
-        </body>
+            <!--end footer-->
+        </div>
+        @endsection
+    </body>
+
     </html>
 </DOCTYPE>
-        

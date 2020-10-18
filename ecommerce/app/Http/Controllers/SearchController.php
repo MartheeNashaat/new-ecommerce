@@ -15,8 +15,7 @@ class SearchController extends Controller
     {
         $images= image::all();               
         $input= \Request::get('searchy');
-        $products = DB::table('products')
-            ->join('brands','products.brand_id','=','brands.id')
+        $products = product::join('brands','products.brand_id','=','brands.id')
             ->join('categories','products.category_id','=','categories.id')
             ->select('*')
             ->where('description', 'LIKE','%'.$input.'%')
