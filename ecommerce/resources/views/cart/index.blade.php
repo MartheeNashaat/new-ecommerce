@@ -1,18 +1,4 @@
-<!-- 
 
-</h3>
-<a  class="btn btn-primary" href="{{route ('cart.checkout')}}" role="button">Proceed to Checkout</a>
-<div>
-        <br />
-<a  class="btn btn-primary" href="{{route ('product.index')}}" role="button">Back to Shop</a>
-</div>
-
-  -->
-
-
-
-
-@extends('layouts.search')
  <DOCTYPE html>
     <html lang="en">
         <head>
@@ -63,7 +49,6 @@
                     <img src="images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
                 </div>
-                @section('content')
             </div>
             </div>
             
@@ -79,6 +64,10 @@
                          <th>Action</th>
                         
                     </tr>
+
+                    @if($cartItems->isEmpty())
+                    <h2>Youe cart is empty,Go ahead and shop with us</h2>
+                    @else
                     @foreach ($cartItems as $item)
                     <tr>
                         <td>
@@ -96,13 +85,15 @@
                         </td>
                         <td>
                             <form action="{{route('cart.update',$item->id)}}">
-                    <input action="onchange" name="quantity" type="number" value ="{{$item->quantity}}">
-                </form>
+                             <input action="onchange" name="quantity" type="number" value ="{{$item->quantity}}">
+                          </form>
                         </td>
-                         <td> {{$item->price}} EGP </td>
+                         <td> {{Cart::session(auth()->id())->get($item->id)->getPriceSum()}} EGP </td>
                        <td> <a href="{{ route('cart.destroy', $item->id) }}">Remove</a></td>
                     </tr> 
                     @endforeach
+                    @endif
+
                 </table>
                
                <div class="total-price ">
@@ -117,6 +108,15 @@
                        </table>
                 </div>
             </div>
+</h3>
+<a  class="btn btn-primary" href="{{route ('cart.checkout')}}" role="button">Proceed to Checkout</a>
+<div>
+        <br />
+<a  class="btn btn-primary" href="{{route ('product.index')}}" role="button">Back to Shop</a>
+</div>
+
+
+
             <div class="footer">
                 <div class="container">
                     <div class="row">
@@ -157,7 +157,6 @@ logo.png" alt="">
                     <p class="copyright">copyright &copy; 2020 www.EgyptHut.com</p>
                 </div>
             </div>
-            @endsection
                    </body>
     </html>
 

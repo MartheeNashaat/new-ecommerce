@@ -82,7 +82,9 @@
                  <div class="col-4">
                  @foreach($images as $productimage)
                  @if ($product->id == $productimage->product_id)
-                    <p > {{$productimage->image}} </p>
+                 <a href="{{route('product.show',$product->id)}}">
+                                    <img src="{{ URL::to('/images/' . $productimage->image) }}"/></a>
+                @break
                     @endif
                      @endforeach
                     <div class="rating">

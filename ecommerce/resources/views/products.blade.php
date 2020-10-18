@@ -3,15 +3,19 @@
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="css/fashion.css">
+            <link rel="stylesheet" href="<?php echo url('/'); ?>/css/
+fashion.css">
             <title> Egypt Hut </title>
             <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;500;600&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/<?php echo url('/'); ?>/css/
+font-awesome.min.css" >
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         </head>
         <body>
             <!--navbar-->
             <div class="header">
             @extends('layouts.search')
+
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
@@ -41,15 +45,16 @@
             </ul>
                     </nav>
                     <a href="{{ route('cart.index') }}">
-                    <img src="images/cartlogo1.png" alt=""/ width="30px" height="30px">
+                    <img src="<?php echo url('/'); ?>/images/cartlogo1.png" alt=""/ width="30px" height="30px">
                     </a>
                     <a href="{{ route('wishlist') }}">
-                    <img src="images/wishlist.png" alt=""/ width="40px" height="40px">
+                    <img src="<?php echo url('/'); ?>/images/wishlist.png" alt=""/ width="40px" height="40px">
                     </a>
                         </ul>
                     </nav>
                 </div>
                 @section('content')
+
             </div>
            </div>
         <!--end navbar-->
@@ -58,21 +63,19 @@
             <div class="row row-2">
                   <h2>All products</h2>
                  
-                  <select>
-                  <optgroup label="By category">
-                    <option><a href="{{ route('product.getfilter',1) }}">clothing </a></option>
-                    <option><a href="{{ route('product.getfilter',2) }}">shoes</a></option>
-                    <option><a href="{{ route('product.getfilter',3) }}">bags</a></option>
-                    <option><a href="{{ route('product.getfilter',4) }}">accessories</a></option>
-                    </optgroup>
-                    <optgroup label="By price">
-                    <option><a href="{{ route('product.getpricefilter',200) }}"><=200 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',500) }}"><= 500 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',700) }}"><= 700 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',1000) }}"><= 1000 EGP</a></option>
-                    <option><a href="{{ route('product.getpricefilter',1500) }}"><= 1500 EGP</a></option>
-                    </optgroup>
-                 </select>
+                  <ul>
+                  <li>By category</li>
+                    <li><a href="{{ route('product.getfilter',1) }}">clothing </a></li>
+                    <li><a href="{{ route('product.getfilter',2) }}">shoes</a></li>
+                    <li><a href="{{ route('product.getfilter',3) }}">bags</a></li>
+                    <li><a href="{{ route('product.getfilter',4) }}">accessories</a></li>
+                    <li>By price</li>
+                    <li><a href="{{ route('product.getpricefilter',200) }}"><=200 EGP</a></li>
+                    <li><a href="{{ route('product.getpricefilter',500) }}"><= 500 EGP</a></li>
+                    <li><a href="{{ route('product.getpricefilter',700) }}"><= 700 EGP</a></li>
+                    <li><a href="{{ route('product.getpricefilter',1000) }}"><= 1000 EGP</a></li>
+                    <li><a href="{{ route('product.getpricefilter',1500) }}"><= 1500 EGP</a></li>
+                    </ul>
            
                
               <div class="row">
@@ -80,7 +83,7 @@
                  <div class="col-4">
                  @foreach($product->images as $productimage)
                  <a href="{{route('product.show',$product->id)}}">
-                <img src={{asset("images/$productimage->image")}} height="auto" width="850" alt="product"/></a>
+                <img src={{asset("images/$productimage->image")}} height="auto" width="800" alt="product"/></a>
                      @break
                      @endforeach
                     <div class="rating">
@@ -91,11 +94,10 @@
                      <i class="fa fa-star-o"></i>
                      </div>
                      <button type="button" class="btn1 btn-outline-danger">{{$product->price}}EGP</button>
-                     
-                     <button type="button" class="btn btn-outline-danger"><a href="{{route('wishlist.add',$product->id)}}">add to wishlist</a></button>
+                  
                      <button type="button" class="btn btn-outline-danger"><a href="{{route('cart.add',$product)}}">Add to cart</a></button>
-                     
-
+                     <a href="{{route('wishlist.add',$product->id)}}">
+                     <i class="material-icons">favorite</i></a>
                      <a href="{{route('product.show',$product->id)}}"
                   
                 </a>
@@ -124,12 +126,15 @@
                             <h3>Download Our App</h3>
                             <p>Download EgyptHut App for IOS and Android mobile phone</p>
                             <div class="app-logo">
-                                <img src="images/applogo1.png" alt="">
-                                 <img src="images/applogo2.png" alt="">
+                                <img src="<?php echo url('/'); ?>/images/
+applogo1.png" alt="">
+                                 <img src="<?php echo url('/'); ?>/images/
+applogo2.png" alt="">
                             </div>
                         </div>
                         <div class="footer-col-2">
-                            <img src="images/logo.png" alt="">
+                            <img src="<?php echo url('/'); ?>/images/
+logo.png" alt="">
                             <p>our purpose is to provide the customer with authentic Designer products</p> 
                         </div>
                         <div class="footer-col-3">
