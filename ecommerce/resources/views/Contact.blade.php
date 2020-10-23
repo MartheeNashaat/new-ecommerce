@@ -17,7 +17,7 @@
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
-                        <img src="images/logo.png" alt=""/ width="200px">
+                        <img src="images/logo.png" alt="" width="200px">
                     </div>
                     <nav>
                         <ul>
@@ -40,32 +40,39 @@
                                 @endif</li>
                         </ul>
                     </nav>
-                    <img src="images/cartlogo1.png" alt=""/ width="30px" height="30px">
-                    <img src="images/wishlist.png" alt=""/ width="30px" height="30px">
+                    <a href="{{ route('cart.index') }}">
+                        <img src="<?php echo url('/'); ?>/images/cartlogo1.png" alt=""/ width="30px" height="30px">
+                    </a>
+                    <a href="{{ route('wishlist') }}">
+                        <img src="<?php echo url('/'); ?>/images/wishlist.png" alt=""/ width="40px" height="40px">
+                    </a>
+                    </ul>
+                    </nav>
                 </div>
                 @section('content')
             </div>
         </div>
 
-
-        <center>
-            <h2>Contact</h2>
-        </center>
-        <center>
-            <p> Talk to us about whatever you like! Please feel free to contact us using our mail egypt@egypthut.com and
-                we will get back to you within 24 hours.</p>
+        <div class="about">
 
 
-            <p><b> Hotline</b> : 18897 </p>
+            <center>
+                <h2>Contact</h2>
+            </center>
+            <center>
+                <p> Talk to us about whatever you like! Please feel free to contact us using our mail egypt@egypthut.com and we will get back to you within 24 hours.</p>
+
+
+                <p><b> Hotline</b> : 18897 </p>
 
 
 
 
-        </center>
+            </center>
 
+        </div>
 
-        </Div>
-
+        <br><br><br>
         <div class="footer">
             <div class="container">
                 <div class="row">
@@ -109,7 +116,7 @@
 </DOCTYPE>
 
 
-
 @endsection
+
 
 </html>

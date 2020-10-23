@@ -62,13 +62,15 @@ font-awesome.min.css">
         </div>
         </div>
 
-        <div class="small-container">
-            <div class="row row-2">
-                <h2>Your Wishlist</h2>
-                <div class="row">
+        <div class="container-sm">
+            <br>
+        <h2 class="row" >Your Wishlist</h2>
+            <div class="row row-2">  
+                <div class="row" > 
                     @if($wishlists->isEmpty())
-                    <h2>Youe wishlist is empty,Go ahead and add to it</h2>
+                    <h2 >Youe wishlist is empty,Go ahead and add to it</h2>
                     @else
+                    <br>
                     @foreach ($wishlists as $wishlist)
                     <div class="col-4">
 
@@ -94,8 +96,50 @@ font-awesome.min.css">
             </div>
 
 
+<br><br><br>
+            <div class="footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer-col-1">
+                                <h3>Download Our App</h3>
+                                <p>Download EgyptHut App for IOS and Android mobile phone</p>
+                                <div class="app-logo">
+                                    <img src="<?php echo url('/'); ?>/images/
+applogo1.png" alt="">
+                                    <img src="<?php echo url('/'); ?>/images/
+applogo2.png" alt="">
+                                </div>
+                            </div>
+                            <div class="footer-col-2">
+                                <img src="<?php echo url('/'); ?>/images/
+logo.png" alt="">
+                                <p>our purpose is to provide the customer with authentic Designer products</p>
+                            </div>
+                            <div class="footer-col-3">
+                                <h3>Useful links</h3>
+                                <ul>
+                                    <li>coupons</li>
+                                    <li>return policy</li>
+                                    <li>Blog Post</li>
 
+                                </ul>
+                            </div>
+                            <div class="footer-col-4">
+                                <h3>Follow Us</h3>
+                                <ul>
+                                    <li>Facebook</li>
+                                    <li>Twitter</li>
+                                    <li>Instagram</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="copyright">copyright &copy; 2020 www.EgyptHut.com</p>
+                    </div>
+                </div>
 
+                <!--end footer-->
+                </div>
             @endsection
     </body>
 </DOCTYPE>

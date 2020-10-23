@@ -15,7 +15,6 @@ font-awesome.min.css">
 
     <body>
         <div class="header">
-
             <div class="container">
                 <div class="navbar">
                     <div class="logo">

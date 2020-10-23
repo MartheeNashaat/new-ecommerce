@@ -66,7 +66,7 @@ font-awesome.min.css">
 
 
 
-            <h2>Checkout Form</h2>
+            <h2 class="row">Checkout Form</h2>
             <div class="row">
                 <div class="col-75">
                     <div class="container">
@@ -74,43 +74,43 @@ font-awesome.min.css">
                             <div class="row">
                                 <div class="col-58">
                                     <h3> Billing Information</h3>
-                                    <br>
+                                    <br><br><br>
                                     <label for="fname"><i class="fa fa-user"></i>Full Name</label>
                                     <input type="text" id="fname" name="fullname">
-                                    <br>
+                                    <br><br><br>
 
                                     <label for="address"><i class="fa fa-institution"></i>Address</label>
                                     <input type="text" id="address" name="Address">
-                                    <br>
+                                    <br><br><br>
 
                                     <label for="City"><i class="fa fa-city"></i>City</label>
                                     <input type="text" id="city" name="City">
-                                    <br>
+                                    <br><br><br>
 
                                     <label for="Phone Number"><i class="fa fa-mobile"></i>Phone Number</label>
                                     <input type="text" id="Phone Number" name="Phone Number">
-                                    <br>
+                                    <br><br><br>
 
                                 </div>
                             </div>
                     </div class="col-50">
                     <h3>Payment Method</h3>
+                    <br><br><br>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" name="payment_method" id="" value="cash_on_delivery">
                             Cash on delivery
 
                         </label>
+                        <br><br><br>
                         <label class="form-check-label">
                             <input type="radio" class="form-check-input" name="payment_method" id="" value="paypal">
                             Paypal
 
                         </label>
-                        <br />
-                        <label for="cname">Name on card</label>
+                        <br><br><br> <label for="cname">Name on card</label>
                         <input type="text" id="cname" name="cardNumber">
-                        <br />
-                        <label for="cnum">credit Card Number </label>
+                        <br><br><br> <label for="cnum">credit Card Number </label>
                         <input type="text" id="cnum" name="cardNumber">
 
 
@@ -151,17 +151,10 @@ font-awesome.min.css">
     
 <br/> -->
 
-
-
-
-
                         <div>
 
                             <br>
-                            <button type="submit" class="btn btn-primary">Place Order</button>
-
-
-
+                            <a  class="btn btn-primary" href="{{route ('cart.done')}}" role="button">Place Order</a>
                         </div>
 
         </form>

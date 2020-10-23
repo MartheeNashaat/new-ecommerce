@@ -1,5 +1,4 @@
 <DOCTYPE html>
-    @extends('layouts.profile-info')
     @extends('layouts.search')
     <html lang="en">
 
@@ -61,18 +60,32 @@
         </div>
         <!--end navbar-->
         <!--product-->
-        <div class="small-container single-product">
+        <div class="small-container single-product" >
             <div class="row">
-                <div class="col-2">
-                    @foreach($product->images as $productimage)
-                    <img src={{asset("images/$productimage->image")}} width="400" height="400" alt="product" />
-                    @endforeach
+                <div class="col-2" >
+                    <div class="slideshow-container" >
+
+                        @foreach($product->images as $productimage)
+                        <div class="mySlides fade" >
+                            <img src={{asset("images/$productimage->image")}} style="width:100%; vertical-align: middle;" alt="product">
+                        </div>
+                        @endforeach
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+
                 </div>
                 <div class="col-2">
                     <p class="jacket">{{$product->brand->name}} </p>
                     <h1>{{$product->name}}</h1>
-                    <button type="button" class="btn btn-outline-danger">{{$product->price}}</button>
-                    <button type="button" class="btn btn-outline-danger">{{$product->sale_price}}</button>
+                    <p style="text-decoration:line-through;">{{$product->price}}EGP</p>
+                    <p style="color:red;">{{$product->sale_price}}EGP</p>
                     <p class="jacket">color:{{$product->color}} </p>
 
                     <select>
@@ -83,7 +96,7 @@
                         <option>S</option>
                     </select>
                     <input type="number" value="1">
-                    <a href="" class="btn cart">Add To Cart</a>
+                    <a href="{{route('cart.add',$product)}}" class="btn cart">Add To Cart</a>
                     <br>
                     <h3>Product Details</h3>
                     <br>
@@ -111,8 +124,7 @@ jacket.png" alt="t-shirt">
                     <button type="button" class="btn btn-outline-danger">700</button>
                 </div>
                 <div class="col-4">
-                    <img src="<?php echo url('/'); ?>/images/
-pantalon.jpg" alt="t-shirt">
+                <img src="{{ URL::to('/images/pantalon.png') }}" /></a>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -191,6 +203,51 @@ logo.png" alt="">
             </div>
         </div>
         @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+        <script>
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("dot");
+                if (n > slides.length) {
+                    slideIndex = 1
+                }
+                if (n < 1) {
+                    slideIndex = slides.length
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+            }
+        </script>
+
     </body>
 
     </html>
